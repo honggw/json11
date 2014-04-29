@@ -72,9 +72,10 @@ public:
     // Constructors for the various types of JSON value.
     Value() noexcept :type_(NUL) {}
     Value(std::nullptr_t) noexcept :type_(NUL) {}
-    Value(int value): type_(INTEGER), value_(value) {}
-    Value(long value): type_(INTEGER), value_(value) {}
+    Value(int32_t value): type_(INTEGER), value_(value) {}
+    Value(uint32_t value): type_(INTEGER), value_(value) {}
     Value(int64_t value): type_(INTEGER), value_(value) {}
+    Value(uint64_t value): type_(INTEGER), value_(value) {}	
     Value(double value): type_(NUMBER), value_(value) {}
     Value(bool value): type_(BOOL), value_(value) {}
     Value(const std::string &value): type_(STRING), value_(new std::string(value)) {}
@@ -290,9 +291,10 @@ private:
       ValueHolder() = default;
       ValueHolder(const ValueHolder&) = default;
       ValueHolder(bool v): b_(v) {}
-      ValueHolder(int v): l_(v) {}
-      ValueHolder(long v): l_(v) {}
+      ValueHolder(int32_t v): l_(v) {}
+      ValueHolder(uint32_t v): l_(v) {}
       ValueHolder(int64_t v): l_(v) {}
+      ValueHolder(uint64_t v): l_(v) {}	   
       ValueHolder(double v): d_(v) {}
       ValueHolder(std::string *v): s_(v) {}
       ValueHolder(Array *v): a_(v) {}
